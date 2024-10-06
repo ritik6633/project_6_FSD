@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>User Profile</h1>
+      <div id="profileData"></div>
+      <input type="file" id="avatarInput" accept="image/*" />
+      <button id="editProfile">Edit Profile</button>
+      <button onclick="location.href='home.html'">Home</button>
+    </div>
+    <script>
+      const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+      const profileData = document.getElementById("profileData");
+      const avatarInput = document.getElementById("avatarInput");
+
+      function loadProfile() {
+        if (loggedInUser) {
+          profileData.innerHTML = `
+                    <img src="${
+                      loggedInUser.avatar || "default-avatar.png"
+                    }" alt="User Avatar" id="userAvatar" style="width:100px; height:100px; border-radius:50%;">
+                    <p>Name: ${loggedInUser.name}</p>
+                    <p>Email: ${loggedInUser.email}</p>
+                `;
+        }
+      }
+
+      loadProfile();
+
+      avatarInput.addEventListener("change", function (event) {
+        const file = event.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onloadend = function () {
+            loggedInUser.avatar = reader.result;
+            localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+            document.getElementById("userAvatar").src = loggedInUser.avatar;
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      document
+        .getElementById("editProfile")
+        .addEventListener("click", function () {
+          const newName = prompt("Enter new name:", loggedInUser.name);
+          if (newName) {
+            loggedInUser.name = newName;
+            localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+            alert("Profile updated successfully!");
+            loadProfile();
+          }
+        });
+    </script>
+  </body>
+</html>

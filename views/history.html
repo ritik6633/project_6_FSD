@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz History</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Quiz History</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody id="historyData"></tbody>
+      </table>
+      <button onclick="location.href='home.html'">Home</button>
+    </div>
+    <script>
+      const historyData = JSON.parse(localStorage.getItem("quizHistory")) || [];
+      const historyContainer = document.getElementById("historyData");
+
+      historyData.forEach((entry) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `<td>${entry.date}</td><td>${entry.score}</td>`;
+        historyContainer.appendChild(row);
+      });
+    </script>
+  </body>
+</html>

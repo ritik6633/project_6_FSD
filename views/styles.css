@@ -1,0 +1,79 @@
+body {
+  font-family: Arial, sans-serif;
+  background-image: url("snowy-mountain-peak-starry-galaxy-majesty-generative-ai.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+.leaderboard-container {
+  text-align: center;
+}
+
+#leaderboard {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+#leaderboard th,
+#leaderboard td {
+  padding: 12px;
+  border: 1px solid #fff;
+}
+
+#leaderboard th {
+  background-color: #333;
+  color: #fff;
+}
+
+#leaderboard tbody tr:nth-child(even) {
+  background-color: #444;
+}
+
+#leaderboard tbody tr:nth-child(odd) {
+  background-color: #555;
+}
